@@ -55,7 +55,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-dark-surface-foreground/10 pt-8 text-center text-sm text-dark-surface-foreground/40 font-body">
-          © 2026 Voyage. Todos los derechos reservados.
+          © 2026 Plaza Bohemia Viajes. Todos los derechos reservados.
         </div>
       </div>
     </footer>

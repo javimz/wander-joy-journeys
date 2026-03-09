@@ -173,7 +173,7 @@ const DestinationDetail = () => {
                 </div>
 
                 <a
-                  href="mailto:info@voyage.com"
+                  href="mailto:info@plazabohemiaviajes.com"
                   className="block w-full rounded-full bg-secondary px-6 py-4 text-center text-secondary-foreground font-semibold text-lg transition-transform hover:scale-105"
                 >
                   Solicitar Cotización
