@@ -117,6 +117,19 @@ const DestinationDetail = () => {
                   ))}
                 </div>
               </div>
+
+              {/* Inquiry Form */}
+              <div className="mt-12">
+                <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                  Solicitar Información
+                </h3>
+                <p className="text-muted-foreground font-body text-sm mb-6">
+                  Completa el formulario y te contactaremos con una propuesta personalizada.
+                </p>
+                <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
+                  <InquiryForm destination={dest.name} />
+                </div>
+              </div>
             </div>
 
             {/* Sidebar */}
