@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { destinations } from "@/data/destinations";
 import { ArrowLeft, Calendar, Sun, Check, MapPin } from "lucide-react";
+import InquiryForm from "@/components/InquiryForm";
 
 const DestinationDetail = () => {
   const { slug } = useParams<{ slug: string }>();
