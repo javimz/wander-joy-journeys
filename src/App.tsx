@@ -7,6 +7,7 @@ import Index from "./pages/Index.tsx";
 import DestinationDetail from "./pages/DestinationDetail.tsx";
 import CruiseDetail from "./pages/CruiseDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import WhatsAppButton from "./components/WhatsAppButton.tsx";
 
 const queryClient = new QueryClient();
 
