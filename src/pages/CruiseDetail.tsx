@@ -138,7 +138,7 @@ const CruiseDetail = () => {
               </div>
 
               {/* Inquiry Form */}
-              <div className="mt-12">
+              <div className="mt-12" id="inquiry-form">
                 <h3 className="font-display text-xl font-semibold text-foreground mb-2">
                   Solicitar Información
                 </h3>
@@ -196,7 +196,7 @@ const CruiseDetail = () => {
                 </div>
 
                 <a
-                  href="mailto:info@voyage.com"
+                  href="#inquiry-form"
                   className="block w-full rounded-full bg-secondary px-6 py-4 text-center text-secondary-foreground font-semibold text-lg transition-transform hover:scale-105"
                 >
                   Solicitar Cotización
