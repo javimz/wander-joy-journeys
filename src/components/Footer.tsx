@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Twitter } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -6,8 +7,8 @@ const Footer = () => {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div className="md:col-span-2">
-            <a href="#hero" className="font-display text-2xl font-bold">
-              Voyage<span className="text-secondary">.</span>
+            <a href="#hero" className="flex items-center">
+              <img src={logo} alt="Logo" className="h-10 w-auto" />
             </a>
             <p className="text-dark-surface-foreground/60 mt-4 max-w-sm font-body text-sm leading-relaxed">
               Tu agencia de viajes premium. Creamos experiencias inolvidables en

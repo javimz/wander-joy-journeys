@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Inicio", href: "#hero" },
@@ -28,11 +29,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container flex items-center justify-between">
-        <a href="#hero" className="font-display text-2xl font-bold tracking-tight">
-          <span className={scrolled ? "text-foreground" : "text-primary-foreground"}>
-            Voyage
-          </span>
-          <span className="text-secondary">.</span>
+        <a href="#hero" className="flex items-center">
+          <img src={logo} alt="Logo" className="h-10 w-auto" />
         </a>
 
         {/* Desktop */}
