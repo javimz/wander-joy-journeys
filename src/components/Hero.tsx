@@ -28,9 +28,7 @@ const Hero = () => {
           className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground leading-[1.1] mb-6 opacity-0 animate-fade-up"
           style={{ animationDelay: "0.4s" }}
         >
-          Descubre el Mundo
-          <br />
-          <span className="italic font-normal">con Nosotros</span>
+          Plaza Bohemia Viajes
         </h1>
         <p
           className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-body opacity-0 animate-fade-up"
