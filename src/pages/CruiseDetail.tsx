@@ -138,7 +138,7 @@ const CruiseDetail = () => {
               </div>
 
               {/* Inquiry Form */}
-              <div className="mt-12">
+              <div className="mt-12" id="inquiry-form">
                 <h3 className="font-display text-xl font-semibold text-foreground mb-2">
                   Solicitar Información
                 </h3>
