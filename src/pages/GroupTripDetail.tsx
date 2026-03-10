@@ -1,23 +1,20 @@
 import { useParams, Link } from "react-router-dom";
-import { destinations } from "@/data/destinations";
-import { ArrowLeft, Calendar, Sun, Check, MapPin } from "lucide-react";
+import { groupTrips } from "@/data/groupTrips";
+import { ArrowLeft, Calendar, Clock, Check, MapPin, Users } from "lucide-react";
 import InquiryForm from "@/components/InquiryForm";
 
-const DestinationDetail = () => {
+const GroupTripDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const dest = destinations.find((d) => d.slug === slug);
+  const trip = groupTrips.find((t) => t.slug === slug);
 
-  if (!dest) {
+  if (!trip) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
           <h1 className="font-display text-3xl font-bold text-foreground mb-4">
-            Destino no encontrado
+            Viaje grupal no encontrado
           </h1>
-          <Link
-            to="/"
-            className="text-secondary font-semibold hover:underline"
-          >
+          <Link to="/" className="text-secondary font-semibold hover:underline">
             Volver al inicio
           </Link>
         </div>
@@ -29,19 +26,11 @@ const DestinationDetail = () => {
     <div className="min-h-screen bg-background">
       {/* Hero */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
-        <img
-          src={dest.image}
-          alt={dest.name}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: "var(--hero-overlay)" }}
-        />
+        <img src={trip.image} alt={trip.name} className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0" style={{ background: "var(--hero-overlay)" }} />
 
-        {/* Back button */}
         <Link
-          to="/#destinations"
+          to="/#grupales"
           className="absolute top-6 left-6 z-20 flex items-center gap-2 rounded-full bg-background/20 backdrop-blur-md px-4 py-2 text-primary-foreground text-sm font-medium transition-colors hover:bg-background/40"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -51,14 +40,14 @@ const DestinationDetail = () => {
         <div className="relative z-10 h-full flex items-end">
           <div className="container pb-12">
             <span className="inline-block rounded-full bg-secondary/90 px-4 py-1.5 text-xs font-semibold text-secondary-foreground uppercase tracking-wider mb-4">
-              {dest.tag}
+              {trip.tag}
             </span>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-2">
-              {dest.name}
+              {trip.name}
             </h1>
             <div className="flex items-center gap-2 text-primary-foreground/70">
               <MapPin className="w-4 h-4" />
-              <span className="font-body">{dest.country}</span>
+              <span className="font-body">{trip.location}</span>
             </div>
           </div>
         </div>
@@ -72,10 +61,10 @@ const DestinationDetail = () => {
             <div className="lg:col-span-2 space-y-10">
               <div>
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
-                  Sobre el Destino
+                  Sobre el Viaje
                 </h2>
                 <p className="text-muted-foreground font-body text-lg leading-relaxed">
-                  {dest.description}
+                  {trip.description}
                 </p>
               </div>
 
@@ -85,17 +74,12 @@ const DestinationDetail = () => {
                   Experiencias Destacadas
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {dest.highlights.map((h) => (
-                    <div
-                      key={h}
-                      className="flex items-start gap-3 rounded-xl bg-card p-4 border border-border"
-                    >
+                  {trip.highlights.map((h) => (
+                    <div key={h} className="flex items-start gap-3 rounded-xl bg-card p-4 border border-border">
                       <div className="w-8 h-8 rounded-full bg-secondary/15 flex items-center justify-center flex-shrink-0 mt-0.5">
                         <Check className="w-4 h-4 text-secondary" />
                       </div>
-                      <span className="font-body text-foreground text-sm">
-                        {h}
-                      </span>
+                      <span className="font-body text-foreground text-sm">{h}</span>
                     </div>
                   ))}
                 </div>
@@ -107,27 +91,25 @@ const DestinationDetail = () => {
                   ¿Qué Incluye?
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {dest.included.map((item) => (
+                  {trip.included.map((item) => (
                     <div key={item} className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-secondary flex-shrink-0" />
-                      <span className="font-body text-sm text-muted-foreground">
-                        {item}
-                      </span>
+                      <span className="font-body text-sm text-muted-foreground">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Inquiry Form */}
-              <div className="mt-12">
+              <div className="mt-12" id="inquiry-form">
                 <h3 className="font-display text-xl font-semibold text-foreground mb-2">
                   Solicitar Información
                 </h3>
                 <p className="text-muted-foreground font-body text-sm mb-6">
-                  Completa el formulario y te contactaremos con una propuesta personalizada.
+                  Completa el formulario y te contactaremos con toda la información del viaje grupal.
                 </p>
                 <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
-                  <InquiryForm destination={dest.name} />
+                  <InquiryForm destination={`Grupal: ${trip.name}`} />
                 </div>
               </div>
             </div>
@@ -136,14 +118,12 @@ const DestinationDetail = () => {
             <div className="lg:col-span-1">
               <div className="sticky top-28 rounded-2xl border border-border bg-card p-8 space-y-6">
                 <div>
-                  <p className="text-muted-foreground text-sm font-body mb-1">
-                    Precio por persona
-                  </p>
+                  <p className="text-muted-foreground text-sm font-body mb-1">Precio por persona</p>
                   <p className="font-display text-3xl font-bold text-foreground">
-                    {dest.price.replace("Desde ", "")}
+                    {trip.price.replace("Desde ", "")}
                   </p>
                   <p className="text-xs text-muted-foreground font-body mt-1">
-                    *Precio base por persona en habitación doble
+                    *Precio base por persona
                   </p>
                 </div>
 
@@ -151,69 +131,27 @@ const DestinationDetail = () => {
                   <div className="flex items-center gap-3">
                     <Calendar className="w-5 h-5 text-secondary" />
                     <div>
-                      <p className="text-xs text-muted-foreground font-body">
-                        Duración
-                      </p>
-                      <p className="text-sm font-semibold text-foreground font-body">
-                        {dest.duration}
-                      </p>
+                      <p className="text-xs text-muted-foreground font-body">Fechas</p>
+                      <p className="text-sm font-semibold text-foreground font-body">{trip.dates}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Sun className="w-5 h-5 text-secondary" />
+                    <Clock className="w-5 h-5 text-secondary" />
                     <div>
-                      <p className="text-xs text-muted-foreground font-body">
-                        Mejor Época
-                      </p>
-                      <p className="text-sm font-semibold text-foreground font-body">
-                        {dest.bestSeason}
-                      </p>
+                      <p className="text-xs text-muted-foreground font-body">Duración</p>
+                      <p className="text-sm font-semibold text-foreground font-body">{trip.duration}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Users className="w-5 h-5 text-secondary" />
+                    <div>
+                      <p className="text-xs text-muted-foreground font-body">Modalidad</p>
+                      <p className="text-sm font-semibold text-foreground font-body">Viaje Grupal</p>
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Other destinations */}
-      <section className="py-16 border-t border-border">
-        <div className="container">
-          <h3 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
-            Otros Destinos
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {destinations
-              .filter((d) => d.slug !== dest.slug)
-              .slice(0, 3)
-              .map((d) => (
-                <Link
-                  key={d.slug}
-                  to={`/destino/${d.slug}`}
-                  className="group relative rounded-2xl overflow-hidden aspect-[4/3]"
-                >
-                  <img
-                    src={d.image}
-                    alt={d.name}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <p className="text-primary-foreground/60 text-xs font-body">
-                      {d.country}
-                    </p>
-                    <h4 className="font-display text-xl font-bold text-primary-foreground">
-                      {d.name}
-                    </h4>
-                    <p className="text-secondary text-sm font-semibold">
-                      {d.price}
-                    </p>
-                  </div>
-                </Link>
-              ))}
           </div>
         </div>
       </section>
@@ -221,4 +159,4 @@ const DestinationDetail = () => {
   );
 };
 
-export default DestinationDetail;
+export default GroupTripDetail;

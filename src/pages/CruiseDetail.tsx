@@ -195,18 +195,6 @@ const CruiseDetail = () => {
                   </div>
                 </div>
 
-                <a
-                  href="#inquiry-form"
-                  className="block w-full rounded-full bg-secondary px-6 py-4 text-center text-secondary-foreground font-semibold text-lg transition-transform hover:scale-105"
-                >
-                  Solicitar Cotización
-                </a>
-                <a
-                  href="tel:+1234567890"
-                  className="block w-full rounded-full border-2 border-foreground/15 px-6 py-4 text-center text-foreground font-semibold transition-all hover:border-secondary hover:text-secondary"
-                >
-                  Llamar Ahora
-                </a>
               </div>
             </div>
           </div>
