@@ -1,11 +1,12 @@
 import { Instagram, Facebook, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
     <footer className="bg-dark-surface text-dark-surface-foreground py-16">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-12">
           <div className="md:col-span-2">
             <a href="#hero" className="flex items-center">
               <img src={logo} alt="Logo" className="h-10 w-auto" />
@@ -51,6 +52,35 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display font-semibold mb-4">Legales</h4>
+            <ul className="space-y-2 text-sm text-dark-surface-foreground/60 font-body">
+              <li>
+                <Link to="/legales/condiciones-generales" className="hover:text-secondary transition-colors">
+                  Condiciones Generales
+                </Link>
+              </li>
+              <li>
+                <Link to="/legales/politica-de-privacidad" className="hover:text-secondary transition-colors">
+                  Política de Privacidad
+                </Link>
+              </li>
+              <li>
+                <Link to="/legales/defensa-al-consumidor" className="hover:text-secondary transition-colors">
+                  Defensa al Consumidor
+                </Link>
+              </li>
+            </ul>
+            <div className="mt-4">
+              <Link
+                to="/arrepentimiento"
+                className="inline-block rounded-full bg-secondary px-5 py-2 text-secondary-foreground text-sm font-semibold transition-transform hover:scale-105"
+              >
+                Botón de Arrepentimiento
+              </Link>
+            </div>
           </div>
         </div>
 

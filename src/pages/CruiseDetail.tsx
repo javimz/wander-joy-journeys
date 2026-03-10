@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import { cruises } from "@/data/cruises";
 import { ArrowLeft, Calendar, Sun, Check, Ship, MapPin, Anchor } from "lucide-react";
 import InquiryForm from "@/components/InquiryForm";
@@ -6,6 +7,10 @@ import InquiryForm from "@/components/InquiryForm";
 const CruiseDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const cruise = cruises.find((c) => c.slug === slug);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   if (!cruise) {
     return (
@@ -64,8 +69,44 @@ const CruiseDetail = () => {
       <section className="py-16 md:py-24">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Sidebar */}
+            <div className="lg:col-span-1 order-2 lg:order-1">
+              <div className="sticky top-28 rounded-2xl border border-border bg-card p-8 space-y-6">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <Calendar className="w-5 h-5 text-secondary" />
+                    <div>
+                      <p className="text-xs text-muted-foreground font-body">Duración</p>
+                      <p className="text-sm font-semibold text-foreground font-body">{cruise.duration}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Sun className="w-5 h-5 text-secondary" />
+                    <div>
+                      <p className="text-xs text-muted-foreground font-body">Mejor Época</p>
+                      <p className="text-sm font-semibold text-foreground font-body">{cruise.bestSeason}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Ship className="w-5 h-5 text-secondary" />
+                    <div>
+                      <p className="text-xs text-muted-foreground font-body">Barco</p>
+                      <p className="text-sm font-semibold text-foreground font-body">{cruise.shipName}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <MapPin className="w-5 h-5 text-secondary" />
+                    <div>
+                      <p className="text-xs text-muted-foreground font-body">Puerto de Salida</p>
+                      <p className="text-sm font-semibold text-foreground font-body">{cruise.departurePort}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Main content */}
-            <div className="lg:col-span-2 space-y-10">
+            <div className="lg:col-span-2 space-y-10 order-1 lg:order-2">
               <div>
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
                   Sobre el Crucero
@@ -83,22 +124,13 @@ const CruiseDetail = () => {
                 </h3>
                 <div className="space-y-3">
                   {cruise.itinerary.map((day) => (
-                    <div
-                      key={day.day}
-                      className="flex gap-4 rounded-xl bg-card p-4 border border-border"
-                    >
+                    <div key={day.day} className="flex gap-4 rounded-xl bg-card p-4 border border-border">
                       <div className="w-12 h-12 rounded-full bg-secondary/15 flex items-center justify-center flex-shrink-0">
-                        <span className="text-secondary font-display font-bold text-sm">
-                          D{day.day}
-                        </span>
+                        <span className="text-secondary font-display font-bold text-sm">D{day.day}</span>
                       </div>
                       <div>
-                        <p className="font-body font-semibold text-foreground text-sm">
-                          {day.port}
-                        </p>
-                        <p className="font-body text-muted-foreground text-sm mt-0.5">
-                          {day.description}
-                        </p>
+                        <p className="font-body font-semibold text-foreground text-sm">{day.port}</p>
+                        <p className="font-body text-muted-foreground text-sm mt-0.5">{day.description}</p>
                       </div>
                     </div>
                   ))}
@@ -136,66 +168,19 @@ const CruiseDetail = () => {
                   ))}
                 </div>
               </div>
-
-              {/* Inquiry Form */}
-              <div className="mt-12" id="inquiry-form">
-                <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                  Solicitar Información
-                </h3>
-                <p className="text-muted-foreground font-body text-sm mb-6">
-                  Completa el formulario y te contactaremos con una propuesta personalizada.
-                </p>
-                <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
-                  <InquiryForm destination={`Crucero: ${cruise.name}`} />
-                </div>
-              </div>
             </div>
+          </div>
 
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-28 rounded-2xl border border-border bg-card p-8 space-y-6">
-                <div>
-                  <p className="text-muted-foreground text-sm font-body mb-1">Precio por persona</p>
-                  <p className="font-display text-3xl font-bold text-foreground">
-                    {cruise.price.replace("Desde ", "")}
-                  </p>
-                  <p className="text-xs text-muted-foreground font-body mt-1">
-                    *Precio base por persona en camarote doble
-                  </p>
-                </div>
-
-                <div className="space-y-4 border-t border-border pt-6">
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-5 h-5 text-secondary" />
-                    <div>
-                      <p className="text-xs text-muted-foreground font-body">Duración</p>
-                      <p className="text-sm font-semibold text-foreground font-body">{cruise.duration}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Sun className="w-5 h-5 text-secondary" />
-                    <div>
-                      <p className="text-xs text-muted-foreground font-body">Mejor Época</p>
-                      <p className="text-sm font-semibold text-foreground font-body">{cruise.bestSeason}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Ship className="w-5 h-5 text-secondary" />
-                    <div>
-                      <p className="text-xs text-muted-foreground font-body">Barco</p>
-                      <p className="text-sm font-semibold text-foreground font-body">{cruise.shipName}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-secondary" />
-                    <div>
-                      <p className="text-xs text-muted-foreground font-body">Puerto de Salida</p>
-                      <p className="text-sm font-semibold text-foreground font-body">{cruise.departurePort}</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+          {/* Inquiry Form - Full width at bottom */}
+          <div className="mt-16" id="inquiry-form">
+            <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+              Solicitar Información
+            </h3>
+            <p className="text-muted-foreground font-body text-sm mb-6">
+              Completa el formulario y te contactaremos con una propuesta personalizada.
+            </p>
+            <div className="rounded-2xl border border-border bg-card p-6 md:p-8 max-w-3xl">
+              <InquiryForm destination={`Crucero: ${cruise.name}`} />
             </div>
           </div>
         </div>
@@ -227,7 +212,6 @@ const CruiseDetail = () => {
                   <div className="absolute bottom-0 left-0 right-0 p-5">
                     <p className="text-primary-foreground/60 text-xs font-body">{c.region} • {c.duration}</p>
                     <h4 className="font-display text-xl font-bold text-primary-foreground">{c.name}</h4>
-                    <p className="text-secondary text-sm font-semibold">{c.price}</p>
                   </div>
                 </Link>
               ))}
