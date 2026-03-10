@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import { groupTrips } from "@/data/groupTrips";
 import { ArrowLeft, Calendar, Clock, Check, MapPin, Users } from "lucide-react";
 import InquiryForm from "@/components/InquiryForm";
@@ -6,6 +7,10 @@ import InquiryForm from "@/components/InquiryForm";
 const GroupTripDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const trip = groupTrips.find((t) => t.slug === slug);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   if (!trip) {
     return (
@@ -57,8 +62,37 @@ const GroupTripDetail = () => {
       <section className="py-16 md:py-24">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Sidebar */}
+            <div className="lg:col-span-1 order-2 lg:order-1">
+              <div className="sticky top-28 rounded-2xl border border-border bg-card p-8 space-y-6">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <Calendar className="w-5 h-5 text-secondary" />
+                    <div>
+                      <p className="text-xs text-muted-foreground font-body">Fechas</p>
+                      <p className="text-sm font-semibold text-foreground font-body">{trip.dates}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-5 h-5 text-secondary" />
+                    <div>
+                      <p className="text-xs text-muted-foreground font-body">Duración</p>
+                      <p className="text-sm font-semibold text-foreground font-body">{trip.duration}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Users className="w-5 h-5 text-secondary" />
+                    <div>
+                      <p className="text-xs text-muted-foreground font-body">Modalidad</p>
+                      <p className="text-sm font-semibold text-foreground font-body">Viaje Grupal</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Main content */}
-            <div className="lg:col-span-2 space-y-10">
+            <div className="lg:col-span-2 space-y-10 order-1 lg:order-2">
               <div>
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
                   Sobre el Viaje
@@ -99,58 +133,19 @@ const GroupTripDetail = () => {
                   ))}
                 </div>
               </div>
-
-              {/* Inquiry Form */}
-              <div className="mt-12" id="inquiry-form">
-                <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                  Solicitar Información
-                </h3>
-                <p className="text-muted-foreground font-body text-sm mb-6">
-                  Completa el formulario y te contactaremos con toda la información del viaje grupal.
-                </p>
-                <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
-                  <InquiryForm destination={`Grupal: ${trip.name}`} />
-                </div>
-              </div>
             </div>
+          </div>
 
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-28 rounded-2xl border border-border bg-card p-8 space-y-6">
-                <div>
-                  <p className="text-muted-foreground text-sm font-body mb-1">Precio por persona</p>
-                  <p className="font-display text-3xl font-bold text-foreground">
-                    {trip.price.replace("Desde ", "")}
-                  </p>
-                  <p className="text-xs text-muted-foreground font-body mt-1">
-                    *Precio base por persona
-                  </p>
-                </div>
-
-                <div className="space-y-4 border-t border-border pt-6">
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-5 h-5 text-secondary" />
-                    <div>
-                      <p className="text-xs text-muted-foreground font-body">Fechas</p>
-                      <p className="text-sm font-semibold text-foreground font-body">{trip.dates}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Clock className="w-5 h-5 text-secondary" />
-                    <div>
-                      <p className="text-xs text-muted-foreground font-body">Duración</p>
-                      <p className="text-sm font-semibold text-foreground font-body">{trip.duration}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Users className="w-5 h-5 text-secondary" />
-                    <div>
-                      <p className="text-xs text-muted-foreground font-body">Modalidad</p>
-                      <p className="text-sm font-semibold text-foreground font-body">Viaje Grupal</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          {/* Inquiry Form - Full width at bottom */}
+          <div className="mt-16" id="inquiry-form">
+            <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+              Solicitar Información
+            </h3>
+            <p className="text-muted-foreground font-body text-sm mb-6">
+              Completa el formulario y te contactaremos con toda la información del viaje grupal.
+            </p>
+            <div className="rounded-2xl border border-border bg-card p-6 md:p-8 max-w-3xl">
+              <InquiryForm destination={`Grupal: ${trip.name}`} />
             </div>
           </div>
         </div>

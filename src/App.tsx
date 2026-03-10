@@ -7,6 +7,8 @@ import Index from "./pages/Index.tsx";
 import DestinationDetail from "./pages/DestinationDetail.tsx";
 import CruiseDetail from "./pages/CruiseDetail.tsx";
 import GroupTripDetail from "./pages/GroupTripDetail.tsx";
+import LegalPage from "./pages/LegalPage.tsx";
+import RegretForm from "./pages/RegretForm.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import WhatsAppButton from "./components/WhatsAppButton.tsx";
 
@@ -23,6 +25,8 @@ const App = () => (
           <Route path="/destino/:slug" element={<DestinationDetail />} />
           <Route path="/crucero/:slug" element={<CruiseDetail />} />
           <Route path="/grupal/:slug" element={<GroupTripDetail />} />
+          <Route path="/legales/:slug" element={<LegalPage />} />
+          <Route path="/arrepentimiento" element={<RegretForm />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

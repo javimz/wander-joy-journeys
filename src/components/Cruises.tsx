@@ -47,9 +47,6 @@ const Cruises = () => {
                 <h3 className="font-display text-2xl font-bold text-primary-foreground mb-2">
                   {cruise.name}
                 </h3>
-                <p className="text-secondary font-semibold text-sm">
-                  {cruise.price}
-                </p>
               </div>
             </Link>
           ))}

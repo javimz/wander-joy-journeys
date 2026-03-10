@@ -47,9 +47,6 @@ const GroupTrips = () => {
                 <h3 className="font-display text-2xl font-bold text-primary-foreground mb-2">
                   {trip.name}
                 </h3>
-                <p className="text-secondary font-semibold text-sm">
-                  {trip.price}
-                </p>
               </div>
             </Link>
           ))}
