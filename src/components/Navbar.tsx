@@ -4,6 +4,7 @@ import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Inicio", href: "#hero" },
+  { label: "Grupales", href: "#grupales" },
   { label: "Destinos", href: "#destinations" },
   { label: "Cruceros", href: "#cruises" },
   { label: "Servicios", href: "#services" },
