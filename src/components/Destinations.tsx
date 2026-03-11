@@ -39,9 +39,12 @@ const Destinations = () => {
                 <p className="text-primary-foreground/70 text-sm font-body mb-1">
                   {dest.country}
                 </p>
-                <h3 className="font-display text-2xl font-bold text-primary-foreground mb-2">
+                <h3 className="font-display text-2xl font-bold text-primary-foreground mb-1">
                   {dest.name}
                 </h3>
+                <p className="text-primary-foreground/60 text-xs font-body">
+                  {dest.dates} • {dest.duration}
+                </p>
               </div>
             </Link>
           ))}

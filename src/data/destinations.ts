@@ -7,11 +7,11 @@ export interface Destination {
   slug: string;
   name: string;
   country: string;
-  price: string;
   image: string;
   tag: string;
   description: string;
   highlights: string[];
+  dates: string;
   duration: string;
   bestSeason: string;
   included: string[];
@@ -22,9 +22,9 @@ export const destinations: Destination[] = [
     slug: "bali",
     name: "Bali",
     country: "Indonesia",
-    price: "Desde $1,299",
     image: destBali,
     tag: "Naturaleza",
+    dates: "Consultar disponibilidad",
     description:
       "Sumérgete en la magia de Bali, la Isla de los Dioses. Desde los exuberantes arrozales de Tegallalang hasta los templos sagrados de Uluwatu, cada rincón de esta isla tropical ofrece una experiencia única. Disfruta de playas paradisíacas, spas de clase mundial y una gastronomía que despierta los sentidos.",
     highlights: [
@@ -49,9 +49,9 @@ export const destinations: Destination[] = [
     slug: "maldivas",
     name: "Maldivas",
     country: "Asia",
-    price: "Desde $2,499",
     image: destMaldives,
     tag: "Playa",
+    dates: "Consultar disponibilidad",
     description:
       "Las Maldivas son el destino definitivo para quienes buscan lujo y serenidad. Imagina despertar en una villa sobre el agua cristalina del Océano Índico, con el sonido suave de las olas como tu alarma. Arrecifes de coral vibrantes, cenas bajo las estrellas y privacidad absoluta te esperan.",
     highlights: [
@@ -76,9 +76,9 @@ export const destinations: Destination[] = [
     slug: "paris",
     name: "París",
     country: "Francia",
-    price: "Desde $1,599",
     image: destParis,
     tag: "Cultura",
+    dates: "Consultar disponibilidad",
     description:
       "París, la Ciudad de la Luz, es un festín para los sentidos. Pasea por las orillas del Sena, descubre obras maestras en el Louvre, saborea croissants recién horneados en cafés centenarios y deja que el encanto de Montmartre te conquiste. Una ciudad que enamora en cada esquina.",
     highlights: [
@@ -103,9 +103,9 @@ export const destinations: Destination[] = [
     slug: "machu-picchu",
     name: "Machu Picchu",
     country: "Perú",
-    price: "Desde $1,199",
     image: destPeru,
     tag: "Aventura",
+    dates: "Consultar disponibilidad",
     description:
       "Camina por los senderos ancestrales de los Incas hasta llegar a una de las maravillas del mundo moderno. Machu Picchu te espera entre nubes y montañas sagradas. Combina la aventura del Camino Inca con la riqueza cultural de Cusco y el Valle Sagrado.",
     highlights: [
