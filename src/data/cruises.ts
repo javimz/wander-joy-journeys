@@ -13,9 +13,9 @@ export interface Cruise {
   slug: string;
   name: string;
   region: string;
-  price: string;
   image: string;
   tag: string;
+  dates: string;
   duration: string;
   shipName: string;
   departurePort: string;
@@ -32,9 +32,9 @@ export const cruises: Cruise[] = [
     slug: "caribe-tropical",
     name: "Caribe Tropical",
     region: "Caribe",
-    price: "Desde $1,899",
     image: cruiseCaribbean,
     tag: "Más Popular",
+    dates: "Consultar disponibilidad",
     duration: "7 noches",
     shipName: "Voyage Explorer",
     departurePort: "Miami, FL",
@@ -72,9 +72,9 @@ export const cruises: Cruise[] = [
     slug: "mediterraneo-clasico",
     name: "Mediterráneo Clásico",
     region: "Europa",
-    price: "Desde $2,599",
     image: cruiseMediterranean,
     tag: "Cultural",
+    dates: "Consultar disponibilidad",
     duration: "10 noches",
     shipName: "Voyage Prestige",
     departurePort: "Barcelona, España",
@@ -115,9 +115,9 @@ export const cruises: Cruise[] = [
     slug: "fiordos-noruegos",
     name: "Fiordos Noruegos",
     region: "Escandinavia",
-    price: "Desde $3,199",
     image: cruiseFjords,
     tag: "Aventura",
+    dates: "Consultar disponibilidad",
     duration: "8 noches",
     shipName: "Voyage Nordic",
     departurePort: "Bergen, Noruega",
@@ -156,9 +156,9 @@ export const cruises: Cruise[] = [
     slug: "alaska-glaciares",
     name: "Alaska & Glaciares",
     region: "América del Norte",
-    price: "Desde $2,899",
     image: cruiseAlaska,
     tag: "Naturaleza",
+    dates: "Consultar disponibilidad",
     duration: "7 noches",
     shipName: "Voyage Wilderness",
     departurePort: "Seattle, WA",

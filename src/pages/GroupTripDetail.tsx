@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { groupTrips } from "@/data/groupTrips";
 import { ArrowLeft, Calendar, Clock, Check, MapPin, Users } from "lucide-react";
 import InquiryForm from "@/components/InquiryForm";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const GroupTripDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -29,6 +31,7 @@ const GroupTripDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
       {/* Hero */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
         <img src={trip.image} alt={trip.name} className="absolute inset-0 w-full h-full object-cover" />
@@ -150,6 +153,7 @@ const GroupTripDetail = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

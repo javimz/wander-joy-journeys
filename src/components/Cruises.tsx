@@ -44,9 +44,12 @@ const Cruises = () => {
                   <Clock className="w-3 h-3" />
                   <span>{cruise.duration}</span>
                 </div>
-                <h3 className="font-display text-2xl font-bold text-primary-foreground mb-2">
+                <h3 className="font-display text-2xl font-bold text-primary-foreground mb-1">
                   {cruise.name}
                 </h3>
+                <p className="text-primary-foreground/60 text-xs font-body">
+                  {cruise.dates}
+                </p>
               </div>
             </Link>
           ))}

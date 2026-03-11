@@ -1,8 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { cruises } from "@/data/cruises";
-import { ArrowLeft, Calendar, Sun, Check, Ship, MapPin, Anchor } from "lucide-react";
+import { ArrowLeft, Calendar, Sun, Check, Ship, MapPin, Anchor, Clock } from "lucide-react";
 import InquiryForm from "@/components/InquiryForm";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const CruiseDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -29,6 +31,7 @@ const CruiseDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
       {/* Hero */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
         <img src={cruise.image} alt={cruise.name} className="absolute inset-0 w-full h-full object-cover" />
@@ -75,6 +78,13 @@ const CruiseDetail = () => {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Calendar className="w-5 h-5 text-secondary" />
+                    <div>
+                      <p className="text-xs text-muted-foreground font-body">Fechas</p>
+                      <p className="text-sm font-semibold text-foreground font-body">{cruise.dates || "Consultar"}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-5 h-5 text-secondary" />
                     <div>
                       <p className="text-xs text-muted-foreground font-body">Duración</p>
                       <p className="text-sm font-semibold text-foreground font-body">{cruise.duration}</p>
@@ -218,6 +228,7 @@ const CruiseDetail = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

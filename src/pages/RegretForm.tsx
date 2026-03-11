@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Send, Loader2, CheckCircle } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const regretSchema = z.object({
   firstName: z.string().trim().min(1, "Nombre es requerido").max(100),
@@ -91,22 +93,26 @@ const RegretForm = () => {
 
   if (status === "success") {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center py-12 max-w-md">
-          <CheckCircle className="w-16 h-16 text-secondary mx-auto mb-4" />
-          <h3 className="font-display text-2xl font-bold text-foreground mb-2">
-            Solicitud Enviada
-          </h3>
-          <p className="text-muted-foreground font-body">
-            Tu solicitud de arrepentimiento ha sido recibida. Nos pondremos en contacto contigo a la brevedad.
-          </p>
-          <Link
-            to="/"
-            className="mt-6 inline-block text-secondary font-semibold hover:underline font-body"
-          >
-            Volver al inicio
-          </Link>
+      <div className="min-h-screen bg-background flex flex-col">
+        <Navbar />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-center py-12 max-w-md">
+            <CheckCircle className="w-16 h-16 text-secondary mx-auto mb-4" />
+            <h3 className="font-display text-2xl font-bold text-foreground mb-2">
+              Solicitud Enviada
+            </h3>
+            <p className="text-muted-foreground font-body">
+              Tu solicitud de arrepentimiento ha sido recibida. Nos pondremos en contacto contigo a la brevedad.
+            </p>
+            <Link
+              to="/"
+              className="mt-6 inline-block text-secondary font-semibold hover:underline font-body"
+            >
+              Volver al inicio
+            </Link>
+          </div>
         </div>
+        <Footer />
       </div>
     );
   }
@@ -116,8 +122,9 @@ const RegretForm = () => {
   const errorClass = "text-destructive text-xs font-body mt-1";
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container py-16 md:py-24 max-w-2xl">
+    <div className="min-h-screen bg-background flex flex-col">
+      <Navbar />
+      <div className="flex-1 container py-16 md:py-24 max-w-2xl pt-28">
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-body text-sm mb-8"
@@ -261,6 +268,7 @@ const RegretForm = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
