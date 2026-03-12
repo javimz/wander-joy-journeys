@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { groupTrips } from "@/data/groupTrips";
-import { ArrowLeft, Calendar, Clock, Check, MapPin, Users } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Check, X, MapPin, Users, Download, AlertTriangle } from "lucide-react";
 import InquiryForm from "@/components/InquiryForm";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -91,51 +91,127 @@ const GroupTripDetail = () => {
                     </div>
                   </div>
                 </div>
+
+                {trip.downloadPdf && (
+                  <a
+                    href={trip.downloadPdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 w-full rounded-xl bg-secondary/10 hover:bg-secondary/20 transition-colors p-4 text-secondary font-semibold text-sm font-body"
+                  >
+                    <Download className="w-5 h-5 flex-shrink-0" />
+                    Descargar Programa Completo (PDF)
+                  </a>
+                )}
               </div>
             </div>
 
             {/* Main content */}
             <div className="lg:col-span-2 space-y-10 order-1 lg:order-2">
+              {/* Description */}
               <div>
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
                   Sobre el Viaje
                 </h2>
-                <p className="text-muted-foreground font-body text-lg leading-relaxed">
+                <div className="text-muted-foreground font-body text-lg leading-relaxed whitespace-pre-line">
                   {trip.description}
-                </p>
-              </div>
-
-              {/* Highlights */}
-              <div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-5">
-                  Experiencias Destacadas
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {trip.highlights.map((h) => (
-                    <div key={h} className="flex items-start gap-3 rounded-xl bg-card p-4 border border-border">
-                      <div className="w-8 h-8 rounded-full bg-secondary/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-4 h-4 text-secondary" />
-                      </div>
-                      <span className="font-body text-foreground text-sm">{h}</span>
-                    </div>
-                  ))}
                 </div>
               </div>
+
+              {/* Programas disponibles (highlights for UK) */}
+              {trip.highlights.length > 0 && (
+                <div>
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-5">
+                    Programas Disponibles
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {trip.highlights.map((h) => (
+                      <div key={h} className="flex items-start gap-3 rounded-xl bg-card p-4 border border-border">
+                        <div className="w-8 h-8 rounded-full bg-secondary/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Check className="w-4 h-4 text-secondary" />
+                        </div>
+                        <span className="font-body text-foreground text-sm">{h}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Sub Programs */}
+              {trip.subPrograms && trip.subPrograms.map((program) => (
+                <div key={program.title} className="rounded-2xl border border-border bg-card p-6 md:p-8 space-y-4">
+                  <h3 className="font-display text-xl font-bold text-foreground">
+                    {program.title}
+                  </h3>
+                  {program.description && (
+                    <p className="text-muted-foreground font-body leading-relaxed">
+                      {program.description}
+                    </p>
+                  )}
+                  <div>
+                    <p className="text-sm font-semibold text-foreground font-body mb-3">Incluye:</p>
+                    <div className="space-y-2">
+                      {program.included.map((item) => (
+                        <div key={item} className="flex items-start gap-2">
+                          <Check className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
+                          <span className="font-body text-sm text-muted-foreground">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
 
               {/* Included */}
-              <div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-5">
-                  ¿Qué Incluye?
-                </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {trip.included.map((item) => (
-                    <div key={item} className="flex items-center gap-2">
-                      <Check className="w-4 h-4 text-secondary flex-shrink-0" />
-                      <span className="font-body text-sm text-muted-foreground">{item}</span>
-                    </div>
-                  ))}
+              {!trip.subPrograms && trip.included.length > 0 && (
+                <div>
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-5">
+                    ¿Qué Incluye?
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {trip.included.map((item) => (
+                      <div key={item} className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
+                        <span className="font-body text-sm text-muted-foreground">{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {/* Not Included */}
+              {trip.notIncluded && trip.notIncluded.length > 0 && (
+                <div>
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-5">
+                    No Incluido
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {trip.notIncluded.map((item) => (
+                      <div key={item} className="flex items-start gap-2">
+                        <X className="w-4 h-4 text-destructive flex-shrink-0 mt-0.5" />
+                        <span className="font-body text-sm text-muted-foreground">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Important Notes */}
+              {trip.importantNotes && trip.importantNotes.length > 0 && (
+                <div>
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-5 flex items-center gap-2">
+                    <AlertTriangle className="w-5 h-5 text-secondary" />
+                    Importante
+                  </h3>
+                  <div className="rounded-2xl border border-border bg-card p-6 space-y-4">
+                    {trip.importantNotes.map((note, i) => (
+                      <p key={i} className="font-body text-sm text-muted-foreground leading-relaxed">
+                        {note}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
