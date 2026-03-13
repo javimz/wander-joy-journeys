@@ -28,15 +28,15 @@ const CTASection = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-muted-foreground text-sm mt-12 pt-8 border-t border-border">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-secondary" />
-              <span>Av. Principal 1234, Ciudad</span>
+              <span>Av Corrientes 457 Piso 1 - CABA</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-secondary" />
-              <span>+1 (234) 567-890</span>
+              <span>+54 9 11 2374-0303</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-secondary" />
-              <span>info@plazabohemiaviajes.com</span>
+              <span>ventas@plazabohemiaviajes.tur.ar</span>
             </div>
           </div>
         </div>
