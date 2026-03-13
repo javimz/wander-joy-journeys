@@ -37,13 +37,6 @@ const CruiseDetail = () => {
         <img src={cruise.image} alt={cruise.name} className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0" style={{ background: "var(--hero-overlay)" }} />
 
-        <Link
-          to="/#cruises"
-          className="absolute top-6 left-6 z-20 flex items-center gap-2 rounded-full bg-background/20 backdrop-blur-md px-4 py-2 text-primary-foreground text-sm font-medium transition-colors hover:bg-background/40"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Volver
-        </Link>
 
         <div className="relative z-10 h-full flex items-end">
           <div className="container pb-12">
