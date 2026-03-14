@@ -1,4 +1,4 @@
-import destBali from "@/assets/dest-bali.jpg";
+import destIguazu from "@/assets/dest-iguazu.jpg";
 import destMaldives from "@/assets/dest-maldives.jpg";
 import destParis from "@/assets/dest-paris.jpg";
 import destPeru from "@/assets/dest-peru.jpg";
@@ -19,28 +19,28 @@ export interface Destination {
 
 export const destinations: Destination[] = [
   {
-    slug: "bali",
-    name: "Bali",
-    country: "Indonesia",
-    image: destBali,
+    slug: "iguazu",
+    name: "Cataratas del Iguazú",
+    country: "Argentina",
+    image: destIguazu,
     tag: "Naturaleza",
     dates: "Consultar disponibilidad",
     description:
-      "Sumérgete en la magia de Bali, la Isla de los Dioses. Desde los exuberantes arrozales de Tegallalang hasta los templos sagrados de Uluwatu, cada rincón de esta isla tropical ofrece una experiencia única. Disfruta de playas paradisíacas, spas de clase mundial y una gastronomía que despierta los sentidos.",
+      "Descubrí una de las Siete Maravillas Naturales del Mundo. Las Cataratas del Iguazú te esperan con más de 275 saltos de agua rodeados de selva misionera. Sentí la fuerza de la Garganta del Diablo, navegá en lancha bajo las cascadas y explorá la biodiversidad única de este paraíso natural en el corazón de Misiones.",
     highlights: [
-      "Terrazas de arroz de Tegallalang",
-      "Templo de Tanah Lot al atardecer",
-      "Snorkel en las islas Nusa",
-      "Ceremonia de purificación balinesa",
-      "Surf en Uluwatu",
+      "Garganta del Diablo desde las pasarelas",
+      "Navegación en gomón bajo las cataratas",
+      "Sendero Macuco por la selva",
+      "Lado brasileño con vista panorámica",
+      "Minas de Wanda y ruinas de San Ignacio",
     ],
-    duration: "7 - 14 días",
-    bestSeason: "Abril - Octubre",
+    duration: "3 - 5 días",
+    bestSeason: "Marzo - Mayo / Agosto - Octubre",
     included: [
-      "Vuelos internacionales",
-      "Hotel 5 estrellas",
+      "Vuelos de cabotaje",
+      "Hotel 4/5 estrellas",
       "Traslados privados",
-      "Guía bilingüe",
+      "Entradas al Parque Nacional",
       "Excursiones incluidas",
       "Seguro de viaje",
     ],
