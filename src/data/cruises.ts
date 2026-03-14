@@ -1,7 +1,7 @@
 import cruiseCaribbean from "@/assets/cruise-caribbean.jpg";
-import cruiseMediterranean from "@/assets/cruise-mediterranean.jpg";
+import cruiseMscFantasia from "@/assets/cruise-msc-fantasia.jpg";
 import cruiseFjords from "@/assets/cruise-fjords.jpg";
-import cruiseAlaska from "@/assets/cruise-alaska.jpg";
+import cruiseTransatlantico from "@/assets/cruise-transatlantico.jpg";
 
 export interface CruiseItineraryDay {
   day: number;
