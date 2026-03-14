@@ -74,7 +74,7 @@ export const cruises: Cruise[] = [
     region: "Sudamérica",
     image: cruiseMscFantasia,
     tag: "Salida Buenos Aires",
-    dates: "6 de Marzo 2026",
+    dates: "6 de Marzo 2027",
     duration: "9 noches",
     shipName: "MSC Fantasia",
     departurePort: "Buenos Aires, Argentina",
