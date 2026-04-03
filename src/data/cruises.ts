@@ -36,7 +36,7 @@ export const cruises: Cruise[] = [
     tag: "Más Popular",
     dates: "Consultar disponibilidad",
     duration: "7 noches",
-    shipName: "Voyage Explorer",
+    shipName: "Consultar",
     departurePort: "Miami, FL",
     description:
       "Navega por las aguas cristalinas del Caribe a bordo del Voyage Explorer. Visita islas paradisíacas, disfruta de playas de arena blanca y sumérgete en la cultura vibrante de cada puerto. Con entretenimiento de clase mundial, gastronomía gourmet y spa a bordo.",
@@ -118,7 +118,7 @@ export const cruises: Cruise[] = [
     tag: "Aventura",
     dates: "Consultar disponibilidad",
     duration: "8 noches",
-    shipName: "Voyage Nordic",
+    shipName: "Consultar",
     departurePort: "Bergen, Noruega",
     description:
       "Navega entre los fiordos más espectaculares del mundo. Cascadas imponentes, montañas nevadas y pueblos vikingos te esperan en esta ruta épica por la costa noruega. Una experiencia que combina naturaleza salvaje con el confort de un crucero de lujo.",
